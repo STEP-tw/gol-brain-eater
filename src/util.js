@@ -1,3 +1,5 @@
+const sleep = require('sleep').msleep;
+
 const generate2DGrid = function(rows,columns){
   let grid = new Array(rows).fill(rows);
   grid = grid.map(x=> new Array(x).fill(0));
@@ -5,13 +7,15 @@ const generate2DGrid = function(rows,columns){
 }
 
 const justify= function(arr){
-  return arr.map(x=> " "+x+" ");
+  let graphicArr = arr.map(x=>x==1?'▓':' ');
+  return graphicArr.map(x=> " "+x+" ");
 }
 
 exports.justify = justify;
 
 
 const displayGrid = function(gridValues) {
+  console.clear();
   let line = new Array(gridValues.length).fill("----").join("");
   let grid = gridValues.map((a)=>justify(a).join("|"))
   return grid.join('\n'+line+'\n');

@@ -1,3 +1,4 @@
+
 const deepEqual = require('assert').deepEqual;
 const {displayGrid,
       duplicate2dGrid,
@@ -14,8 +15,8 @@ describe( 'generate2DGrid' , function() {
 
 describe('displayGrid', function() {
   it('should return string representing grid', function() {
-    deepEqual(displayGrid([[1], [1]]),' 1 \n--------\n 1 ');
-    deepEqual(displayGrid([[1, 2], [1, 2]]),' 1 | 2 \n--------\n 1 | 2 ');
+    deepEqual(displayGrid([[1], [1]]),' ▓ \n--------\n ▓ ');
+    deepEqual(displayGrid([[1, 2], [1, 2]]),' ▓ |   \n--------\n ▓ |   ');
   });
 });
 
