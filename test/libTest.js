@@ -8,8 +8,8 @@ let {
 
 describe('generateGrid', function() {
   it('should take grid size and alive cells and return grid', function() {
-    deepEqual(generateGrid(3, [3, 5]), [[0, 0, 1], [0, 1, 0], [0, 0, 0]]);
-    deepEqual(generateGrid(3, []), [[0, 0, 0], [0, 0, 0], [0, 0, 0]]);
+    deepEqual(generateGrid({length:2,breadth:2},[[0,1]]), [[0, 1], [0, 0] ]);
+    deepEqual(generateGrid({length:2,breadth:3}, [[0,0],[1,1],[0,2]]), [[1, 0, 1], [0, 1, 0]]);
   });
 });
 

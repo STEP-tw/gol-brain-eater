@@ -1,7 +1,5 @@
-const sleep = require('sleep').msleep;
-
 const generate2DGrid = function(rows,columns){
-  let grid = new Array(rows).fill(rows);
+  let grid = new Array(rows).fill(columns);
   grid = grid.map(x=> new Array(x).fill(0));
   return grid;
 }

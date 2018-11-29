@@ -8,10 +8,12 @@ let {getCellPos,
 } = require('./util.js');
 
 
-const generateGrid = function(size, aliveCells) {
-  let grid = generate2DGrid(size, size);
-  for (let pos of aliveCells) {
-    let {row, column} = getCellPos(pos,grid.length);
+const generateGrid = function(dimensions, aliveCells) {
+  let {length,breadth} = dimensions;
+  let grid = generate2DGrid(length, breadth);
+  for (let position of aliveCells) {
+    let row = position[0];
+    let column = position[1];
     grid[row][column] = 1;
   }
   return grid;
