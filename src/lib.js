@@ -8,20 +8,6 @@ let {getCellPos,
 } = require('./util.js');
 
 
-const getGridDetails = function() {
-  let gridSize = parseInt(getGridSize());
-  let aliveCells = getAliveCells().split(',');
-  return {gridSize, aliveCells};
-};
-
-const getGridSize = function() {
-  return read.question('Enter grid size:\n');
-};
-
-const getAliveCells = function() {
-  return read.question('Enter alive cell positions seperated by "," :\n');
-};
-
 const generateGrid = function(size, aliveCells) {
   let grid = generate2DGrid(size, size);
   for (let pos of aliveCells) {
