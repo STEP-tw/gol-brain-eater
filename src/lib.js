@@ -37,22 +37,29 @@ const extractNeighbours = function(row,column,Array_2D){
 }
 exports.extractNeighbours = extractNeighbours;
 
-const iterateGrid = function(grid) {
-  let gridSize = grid.length;
-  let currentState = duplicate2dGrid(grid);
-  for (let row = 0; row < gridSize; row++) {
-    for (let column = 0; column < gridSize; column++) {
-      let noOfNeighbours = countNeighbours(row, column, currentState);
-      if (noOfNeighbours != 2 ) {
-        grid[row][column] = evaluateStatus(noOfNeighbours);
+const iterateGrid = function(dimensions,aliveCells) {
+  let {length,breadth} = dimensions;
+  let grid = generateGrid(dimensions,aliveCells);
+  let nextGen = [];
+  for (let row = 0; row < length; row++) {
+    for (let column = 0; column < breadth; column++) {
+      let noOfNeighbours = countNeighbours(row, column, grid);
+      let cellStatus = grid[row][column];
+      cellStatus = evaluateStatus(noOfNeighbours,cellStatus); 
+      if(cellStatus == 1){
+        nextGen.push([row,column]);
       }
     }
   }
+  return nextGen;
 };
 
 exports.iterateGrid = iterateGrid;
 
-const evaluateStatus = function(noOfNeighbours){
+const evaluateStatus = function(noOfNeighbours,cellStatus){
+  if(noOfNeighbours == 2){
+    return cellStatus;
+  }
   if (noOfNeighbours == 3) {
     return 1;
   }

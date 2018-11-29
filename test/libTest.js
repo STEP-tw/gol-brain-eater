@@ -32,9 +32,14 @@ describe ( 'extractNeighbours' , function() {
 
 describe( 'iterateGrid'  , function() {
   it( 'should iterate the grid to next generations' , function() {
-    let grid = [[0,1,1],[1,0,0],[1,0,1]];
-    iterateGrid(grid);
-    deepEqual(grid,[ [ 0, 1, 0 ], [ 1, 0, 1 ], [ 0, 1, 0 ] ]);
+    let dimensions = {length:3,breadth:3};
+    let aliveCells = [[0,1],[0,2],[1,0],[2,0],[2,2]];
+    let expectedOutput = [ [ 0, 1 ], [ 1, 0 ], [ 1, 2 ], [ 2, 1 ] ];
+    deepEqual(iterateGrid(dimensions,aliveCells),expectedOutput);
+    dimensions = {length:2,breadth:3};
+    aliveCells = [[0,0],[0,2],[1,1]];
+    expectedOutput = [[0,1],[1,1]];
+    deepEqual(iterateGrid(dimensions,aliveCells),expectedOutput);
   });
 });
 
