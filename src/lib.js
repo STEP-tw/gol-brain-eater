@@ -1,4 +1,3 @@
-let read = require('readline-sync');
 let {getCellPos,
   generate2DGrid,
   extractNeighbourElements,
