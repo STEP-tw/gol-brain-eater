@@ -2,7 +2,7 @@ const sleep = require('sleep').msleep;
 const read = require('readline-sync').question;
 const { generateGrid } = require("./src/lib.js");
 const { displayGrid } = require("./src/util.js");
-const { getDimensions , nextGeneration}= require('./src/startGame.js');
+const { getDimensions , nextGeneration}= require('./src/gameOfLife.js');
 
 const main = function() {
   let topLeft = JSON.parse(read('Enter topLeft bound of grid in format "[x,y]":\n'));
