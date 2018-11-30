@@ -24,20 +24,20 @@ exports.generateGrid = generateGrid;
 const countNeighbours = function(row, column, grid) {
   let cell = grid[row][column];
   let neighbours = extractNeighbours(row,column,grid);
-  let AliveNbs = convertTo1D(neighbours).filter(x=>x==1);
-  return AliveNbs.length-cell;
+  let aliveNeighbours = convertTo1D(neighbours).filter(x=>x==1);
+  return aliveNeighbours.length-cell;
 };
 
 exports.countNeighbours = countNeighbours;
 
 
-const extractNeighbours = function(row,column,Array_2D){
-  let extractNbWithColumn = extractNeighbourElements.bind(null,column);
-  return  extractNeighbourElements(row,Array_2D).map(extractNbWithColumn);
+const extractNeighbours = function(row,column,matrix){
+  let extractNeighboursOfColumn = extractNeighbourElements.bind(null,column);
+  return  extractNeighbourElements(row,matrix).map(extractNeighboursOfColumn);
 }
 exports.extractNeighbours = extractNeighbours;
 
-const updateNextGenStatus = function(grid,row,column){
+const updateStatus = function(grid,row,column){
   let noOfNeighbours = countNeighbours(row, column, grid);
   let cellStatus = grid[row][column];
   cellStatus = evaluateStatus(noOfNeighbours,cellStatus); 
@@ -50,7 +50,7 @@ const iterateGrid = function(dimensions,aliveCells) {
   let nextGen = [];
   for (let row = 0; row < length; row++) {
     for (let column = 0; column < breadth; column++) {
-      updateNextGenStatus(grid,row,column) == 1 && nextGen.push([row,column]);
+      updateStatus(grid,row,column) == 1 && nextGen.push([row,column]);
    }
   }
   return nextGen;
