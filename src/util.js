@@ -23,15 +23,15 @@ const displayGrid = function(grid) {
   return displayableGrid.join('\n'+line+'\n');
 };
 
-const convertTo1D= function(Array_2D){
-  return Array_2D.reduce((x,y)=>x.concat(y));
+const convertTo1D= function(matrix){
+  return matrix.reduce((x,y)=>x.concat(y));
 }
 
-const extractNeighbourElements = function(pos,array){
+const extractNeighbourElements = function(position,elements){
   let extractedArray = [];
-  extractedArray.push(array[pos-1]);
-  extractedArray.push(array[pos]);
-  extractedArray.push(array[pos+1]);
+  extractedArray.push(elements[position-1]);
+  extractedArray.push(elements[position]);
+  extractedArray.push(elements[position+1]);
   return extractedArray.filter(x=>x!=undefined);
 }
 
