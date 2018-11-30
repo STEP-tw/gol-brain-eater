@@ -7,14 +7,15 @@ let {getCellPos,
 } = require('./util.js');
 
 
+const generateAliveCell = function(grid,cellCoordinates){
+  grid[cellCoordinates[0]][cellCoordinates[1]] = 1;
+  return grid;
+}
+
 const generateGrid = function(dimensions, aliveCells) {
   let {length,breadth} = dimensions;
   let grid = generate2DGrid(length, breadth);
-  for (let position of aliveCells) {
-    let row = position[0];
-    let column = position[1];
-    grid[row][column] = 1;
-  }
+  grid = aliveCells.reduce(generateAliveCell,grid);
   return grid;
 };
 
@@ -56,13 +57,9 @@ const iterateGrid = function(dimensions,aliveCells) {
 exports.iterateGrid = iterateGrid;
 
 const evaluateStatus = function(noOfNeighbours,cellStatus){
-  if(noOfNeighbours == 2){
-    return cellStatus;
-  }
-  if (noOfNeighbours == 3) {
-    return 1;
-  }
-  return 0;
+  let willRemainAlive = noOfNeighbours == 2 && cellStatus;
+  let willLive  = noOfNeighbours == 3 && 1;
+  return willRemainAlive || willLive || 0;
 }
 
 exports.evaluateStatus = evaluateStatus;
