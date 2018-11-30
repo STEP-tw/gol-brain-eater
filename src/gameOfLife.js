@@ -39,18 +39,23 @@ const mapCoordinates = function(point, coordinates) {
   return coordinates.map(mapCoordinatesFromPoint);
 };
 
-const nextGeneration = function(currGeneration, bounds) {
-  let {topLeft, bottomRight} = bounds;
-  let currAlivePositions = currGeneration.slice();
+const getDimensions = function(topLeft,bottomRight){
   let length = bottomRight[0] - topLeft[0] + 1;
   let breadth = bottomRight[1] - topLeft[1] + 1;
-  currAlivePositions = mapCoordinatesFromOrigin(topLeft, currAlivePositions);
+  return {length,breadth};
+}
+
+const nextGeneration = function(currGeneration, bounds) {
+  let {topLeft, bottomRight} = bounds;
+  let currentAliveCells = currGeneration.slice();
+  let {length,breadth} = getDimensions(topLeft,bottomRight);
+  currentAliveCells = mapCoordinatesFromOrigin(topLeft, currentAliveCells);
   let bottomRightFromOrigin = [length - 1, breadth - 1];
-  currAlivePositions = validateCoordinates(
+  currentAliveCells = validateCoordinates(
     bottomRightFromOrigin,
-    currAlivePositions,
+    currentAliveCells,
   );
-  let nextGen = iterateGrid({length, breadth}, currAlivePositions);
+  let nextGen = iterateGrid({length, breadth}, currentAliveCells);
   return mapCoordinates(topLeft,nextGen);
 };
 
