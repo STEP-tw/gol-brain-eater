@@ -1,7 +1,6 @@
-let {getCellPos,
+let {
   generate2DGrid,
   extractNeighbourElements,
-  duplicate2dGrid,
   convertTo1D,
   displayGrid
 } = require('./util.js');

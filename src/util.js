@@ -23,12 +23,6 @@ const displayGrid = function(grid) {
   return displayableGrid.join('\n'+line+'\n');
 };
 
-const getCellPos = function(pos,size) {
-  let row = parseInt((pos - 1) / size);
-  let column = (pos - 1) % size;
-  return {row, column};
-}
-
 const convertTo1D= function(Array_2D){
   return Array_2D.reduce((x,y)=>x.concat(y));
 }
@@ -41,17 +35,10 @@ const extractNeighbourElements = function(pos,array){
   return extractedArray.filter(x=>x!=undefined);
 }
 
-const duplicate2dGrid = function(grid){
-  return grid.map(x=>x.slice());
-}
-
-exports.duplicate2dGrid = duplicate2dGrid;
 
 exports.extractNeighbourElements = extractNeighbourElements;
 
 exports.convertTo1D = convertTo1D;
-
-exports.getCellPos = getCellPos;
 
 exports.displayGrid = displayGrid;
 
