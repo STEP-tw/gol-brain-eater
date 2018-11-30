@@ -4,19 +4,23 @@ const generate2DGrid = function(rows,columns){
   return grid;
 }
 
-const justify= function(arr){
-  let graphicArr = arr.map(x=>x==1?'▓':' ');
-  return graphicArr.map(x=> " "+x+" ");
+const replaceWithRect = function(elements){
+  return elements.map(x=>x==1?'▓':' ');
+}
+
+const justify= function(elements){
+  return elements.map(x=> " "+x+" ");
 }
 
 exports.justify = justify;
 
 
-const displayGrid = function(gridValues) {
+const displayGrid = function(grid) {
   console.clear();
-  let line = new Array(gridValues.length).fill("----").join("");
-  let grid = gridValues.map((a)=>justify(a).join("|"))
-  return grid.join('\n'+line+'\n');
+  let line = new Array(grid.length).fill("----").join("");
+  let displayableGrid = grid.map(replaceWithRect)
+  displayableGrid = displayableGrid.map((a)=>justify(a).join("|"))
+  return displayableGrid.join('\n'+line+'\n');
 };
 
 const getCellPos = function(pos,size) {
