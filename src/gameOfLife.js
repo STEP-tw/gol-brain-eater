@@ -59,4 +59,4 @@ const nextGeneration = function(currGeneration, bounds) {
   return mapCoordinates(topLeft,nextGen);
 };
 
-module.exports = {nextGeneration};
+module.exports = {nextGeneration,getDimensions};
