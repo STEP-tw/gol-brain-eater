@@ -37,19 +37,21 @@ const extractNeighbours = function(row,column,Array_2D){
 }
 exports.extractNeighbours = extractNeighbours;
 
+const updateNextGenStatus = function(grid,row,column){
+  let noOfNeighbours = countNeighbours(row, column, grid);
+  let cellStatus = grid[row][column];
+  cellStatus = evaluateStatus(noOfNeighbours,cellStatus); 
+  return cellStatus;
+}
+
 const iterateGrid = function(dimensions,aliveCells) {
   let {length,breadth} = dimensions;
   let grid = generateGrid(dimensions,aliveCells);
   let nextGen = [];
   for (let row = 0; row < length; row++) {
     for (let column = 0; column < breadth; column++) {
-      let noOfNeighbours = countNeighbours(row, column, grid);
-      let cellStatus = grid[row][column];
-      cellStatus = evaluateStatus(noOfNeighbours,cellStatus); 
-      if(cellStatus == 1){
-        nextGen.push([row,column]);
-      }
-    }
+      updateNextGenStatus(grid,row,column) == 1 && nextGen.push([row,column]);
+   }
   }
   return nextGen;
 };
