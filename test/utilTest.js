@@ -17,12 +17,16 @@ describe( 'generate2DGrid' , function() {
 describe('displayGrid', function() {
   it('should return string representing grid', function() {
     deepEqual(displayGrid([[1], [1]]),' ▓ \n--------\n ▓ ');
-    deepEqual(displayGrid([[1, 2], [1, 2]]),' ▓ |   \n--------\n ▓ |   ');
+    deepEqual(displayGrid([[1, 0], [1, 0]]),' ▓ |   \n--------\n ▓ |   ');
+    deepEqual(displayGrid([[1, 1]]),' ▓ | ▓ ');
+    deepEqual(displayGrid([[0, 0]]),'   |   ');
+    deepEqual(displayGrid([]),'');
   });
 });
 
 describe( 'convertTo1D' ,function() {
   it( 'should take 2D array and convert it to 1D' , function() {
+    deepEqual(convertTo1D([[1,2],[1,2]]),[1,2,1,2]);
     deepEqual(convertTo1D([[1,2],[1,2]]),[1,2,1,2]);
     deepEqual(convertTo1D([[1],[2]]),[1,2]);
   });
