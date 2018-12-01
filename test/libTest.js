@@ -59,7 +59,14 @@ describe( 'iterateGrid'  , function() {
 
 describe( 'evaluateStatus' , function() {
   it( 'it should evaluate the state of the cell using number of its neighbours' , function() {
-    deepEqual(evaluateStatus(1),0);
-    deepEqual(evaluateStatus(3),1);
+    deepEqual(evaluateStatus(1,0),0);
+    deepEqual(evaluateStatus(1,1),0);
+    deepEqual(evaluateStatus(2,1),1);
+    deepEqual(evaluateStatus(2,0),0);
+    deepEqual(evaluateStatus(3,1),1);
+    deepEqual(evaluateStatus(3,0),1);
+    deepEqual(evaluateStatus(4,0),0);
+    deepEqual(evaluateStatus(4,1),0);
+    deepEqual(evaluateStatus(7,1),0);
   });
 })
