@@ -8,6 +8,9 @@ const {displayGrid,
 describe( 'generate2DGrid' , function() {
   it( 'should return a grid of given row and column' , function() {
     deepEqual(generate2DGrid(2,2),[[0,0],[0,0]]);
+    deepEqual(generate2DGrid(1,1),[[0]]);
+    deepEqual(generate2DGrid(0,0),[]);
+    deepEqual(generate2DGrid(1,2),[[0,0]]);
   });
 })
 
