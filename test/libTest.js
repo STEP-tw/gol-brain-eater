@@ -2,7 +2,7 @@ const deepEqual = require('assert').deepEqual;
 let {
   evaluateStatus,
   iterateGrid,
-  countNeighbours,
+  countAliveNeighbours,
   extractNeighbours,
   generateGrid} = require('../src/lib.js');
 
@@ -17,12 +17,12 @@ describe('generateGrid', function() {
 });
 
 
-describe('countNeighbours', function() {
+describe('countAliveNeighbours', function() {
   it('should return no of neighbours of given cell', function() {
-    deepEqual(countNeighbours(1, 1, [[0, 1, 1], [1, 1, 1], [1, 1, 1]]), 7);
-    deepEqual(countNeighbours(0, 0, [[0, 1, 1], [1, 1, 1], [1, 1, 1]]), 3);
-    deepEqual(countNeighbours(2, 0, [[0, 0, 0], [0, 0, 0], [0, 0, 0]]), 0);
-    deepEqual(countNeighbours(0, 2, [[0, 0, 1], [1, 1, 0], [0, 0, 0]]), 1);
+    deepEqual(countAliveNeighbours(1, 1, [[0, 1, 1], [1, 1, 1], [1, 1, 1]]), 7);
+    deepEqual(countAliveNeighbours(0, 0, [[0, 1, 1], [1, 1, 1], [1, 1, 1]]), 3);
+    deepEqual(countAliveNeighbours(2, 0, [[0, 0, 0], [0, 0, 0], [0, 0, 0]]), 0);
+    deepEqual(countAliveNeighbours(0, 2, [[0, 0, 1], [1, 1, 0], [0, 0, 0]]), 1);
   });
 });
 

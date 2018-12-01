@@ -20,14 +20,14 @@ const generateGrid = function(dimensions, aliveCells) {
 
 exports.generateGrid = generateGrid;
 
-const countNeighbours = function(row, column, grid) {
+const countAliveNeighbours = function(row, column, grid) {
   let cell = grid[row][column];
   let neighbours = extractNeighbours(row,column,grid);
   let aliveNeighbours = convertToLinear(neighbours).filter(x=>x==1);
   return aliveNeighbours.length-cell;
 };
 
-exports.countNeighbours = countNeighbours;
+exports.countAliveNeighbours = countAliveNeighbours;
 
 
 const extractNeighbours = function(row,column,matrix){
@@ -37,7 +37,7 @@ const extractNeighbours = function(row,column,matrix){
 exports.extractNeighbours = extractNeighbours;
 
 const updateStatus = function(grid,row,column){
-  let noOfNeighbours = countNeighbours(row, column, grid);
+  let noOfNeighbours = countAliveNeighbours(row, column, grid);
   let cellStatus = grid[row][column];
   cellStatus = evaluateStatus(noOfNeighbours,cellStatus); 
   return cellStatus;
