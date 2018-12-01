@@ -34,9 +34,9 @@ describe( 'convertToLinear' ,function() {
 })
 
 describe( 'extractNeighbourhoodElements' , function() {
-  it( 'should take an array and position and returns array of its neighbour elements' , function() {
-    deepEqual(extractNeighbourhoodElements(0,[1,2,3]),[1,2]);
-    deepEqual(extractNeighbourhoodElements(1,[1,2,3]),[1,2,3]);
-    deepEqual(extractNeighbourhoodElements(2,[1,2,3]),[2,3]);
+  it( 'should take an array and position and returns array of its neighbourhood elements' , function() {
+    deepEqual(extractNeighbourhoodElements(0,[0,1,2]),[0,1]);
+    deepEqual(extractNeighbourhoodElements(1,[0,1,2]),[0,1,2]);
+    deepEqual(extractNeighbourhoodElements(2,[0,1,2]),[1,2]);
   });
 })
