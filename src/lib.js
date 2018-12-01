@@ -1,7 +1,7 @@
 let {
   generate2DGrid,
-  extractNeighbourElements,
-  convertTo1D,
+  extractNeighbourhoodElements,
+  convertToLinear,
   displayGrid
 } = require('./util.js');
 
@@ -23,7 +23,7 @@ exports.generateGrid = generateGrid;
 const countNeighbours = function(row, column, grid) {
   let cell = grid[row][column];
   let neighbours = extractNeighbours(row,column,grid);
-  let aliveNeighbours = convertTo1D(neighbours).filter(x=>x==1);
+  let aliveNeighbours = convertToLinear(neighbours).filter(x=>x==1);
   return aliveNeighbours.length-cell;
 };
 
@@ -31,8 +31,8 @@ exports.countNeighbours = countNeighbours;
 
 
 const extractNeighbours = function(row,column,matrix){
-  let extractNeighboursOfColumn = extractNeighbourElements.bind(null,column);
-  return  extractNeighbourElements(row,matrix).map(extractNeighboursOfColumn);
+  let extractNeighboursOfColumn = extractNeighbourhoodElements.bind(null,column);
+  return  extractNeighbourhoodElements(row,matrix).map(extractNeighboursOfColumn);
 }
 exports.extractNeighbours = extractNeighbours;
 

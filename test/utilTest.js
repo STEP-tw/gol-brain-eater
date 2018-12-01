@@ -1,8 +1,8 @@
 
 const deepEqual = require('assert').deepEqual;
 const {displayGrid,
-      convertTo1D,
-      extractNeighbourElements,
+      convertToLinear,
+      extractNeighbourhoodElements,
        generate2DGrid} = require('../src/util.js');
 
 describe( 'generate2DGrid' , function() {
@@ -24,19 +24,19 @@ describe('displayGrid', function() {
   });
 });
 
-describe( 'convertTo1D' ,function() {
-  it( 'should take 2D array and convert it to 1D' , function() {
-    deepEqual(convertTo1D([[1,2],[1,2]]),[1,2,1,2]);
-    deepEqual(convertTo1D([[1],[1]]),[1,1]);
-    deepEqual(convertTo1D([[1],[2]]),[1,2]);
-    deepEqual(convertTo1D([[],[]]),[]);
+describe( 'convertToLinear' ,function() {
+  it( 'should take 2D array and convert it to Linear' , function() {
+    deepEqual(convertToLinear([[1,2],[1,2]]),[1,2,1,2]);
+    deepEqual(convertToLinear([[1],[1]]),[1,1]);
+    deepEqual(convertToLinear([[1],[2]]),[1,2]);
+    deepEqual(convertToLinear([[],[]]),[]);
   });
 })
 
-describe( 'extractNeighbourElements' , function() {
+describe( 'extractNeighbourhoodElements' , function() {
   it( 'should take an array and position and returns array of its neighbour elements' , function() {
-    deepEqual(extractNeighbourElements(0,[1,2,3]),[1,2]);
-    deepEqual(extractNeighbourElements(1,[1,2,3]),[1,2,3]);
-    deepEqual(extractNeighbourElements(2,[1,2,3]),[2,3]);
+    deepEqual(extractNeighbourhoodElements(0,[1,2,3]),[1,2]);
+    deepEqual(extractNeighbourhoodElements(1,[1,2,3]),[1,2,3]);
+    deepEqual(extractNeighbourhoodElements(2,[1,2,3]),[2,3]);
   });
 })

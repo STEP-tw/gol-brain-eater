@@ -23,11 +23,11 @@ const displayGrid = function(grid) {
   return displayableGrid.join('\n'+line+'\n');
 };
 
-const convertTo1D= function(matrix){
+const convertToLinear= function(matrix){
   return matrix.reduce((x,y)=>x.concat(y));
 }
 
-const extractNeighbourElements = function(position,elements){
+const extractNeighbourhoodElements = function(position,elements){
   let extractedArray = [];
   extractedArray.push(elements[position-1]);
   extractedArray.push(elements[position]);
@@ -36,9 +36,9 @@ const extractNeighbourElements = function(position,elements){
 }
 
 
-exports.extractNeighbourElements = extractNeighbourElements;
+exports.extractNeighbourhoodElements = extractNeighbourhoodElements;
 
-exports.convertTo1D = convertTo1D;
+exports.convertToLinear = convertToLinear;
 
 exports.displayGrid = displayGrid;
 
