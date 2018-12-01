@@ -27,8 +27,9 @@ describe('displayGrid', function() {
 describe( 'convertTo1D' ,function() {
   it( 'should take 2D array and convert it to 1D' , function() {
     deepEqual(convertTo1D([[1,2],[1,2]]),[1,2,1,2]);
-    deepEqual(convertTo1D([[1,2],[1,2]]),[1,2,1,2]);
+    deepEqual(convertTo1D([[1],[1]]),[1,1]);
     deepEqual(convertTo1D([[1],[2]]),[1,2]);
+    deepEqual(convertTo1D([[],[]]),[]);
   });
 })
 
