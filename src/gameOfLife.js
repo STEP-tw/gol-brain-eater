@@ -18,7 +18,7 @@ const isLessThan = function(limitCoordinate, coordinate) {
   );
 };
 
-const mapCoordinatesFromOrigin = function(startingPoint, coordinates) {
+const translateFromOrigin = function(startingPoint, coordinates) {
   let subtractCoordinatesFromStart = subtractCoordinates.bind(
     null,
     startingPoint
@@ -34,9 +34,9 @@ const validateCoordinates = function(bottomRight, coordinates) {
   return validCoordinates;
 };
 
-const mapCoordinates = function(point, coordinates) {
-  let mapCoordinatesFromPoint = addCoordinates.bind(null, point);
-  return coordinates.map(mapCoordinatesFromPoint);
+const translate = function(point, coordinates) {
+  let translateFromPoint = addCoordinates.bind(null, point);
+  return coordinates.map(translateFromPoint);
 };
 
 const getDimensions = function(topLeft,bottomRight){
@@ -49,14 +49,14 @@ const nextGeneration = function(currGeneration, bounds) {
   let {topLeft, bottomRight} = bounds;
   let currentAliveCells = currGeneration.slice();
   let {length,breadth} = getDimensions(topLeft,bottomRight);
-  currentAliveCells = mapCoordinatesFromOrigin(topLeft, currentAliveCells);
+  currentAliveCells = translateFromOrigin(topLeft, currentAliveCells);
   let bottomRightFromOrigin = [length - 1, breadth - 1];
   currentAliveCells = validateCoordinates(
     bottomRightFromOrigin,
     currentAliveCells,
   );
   let nextGen = iterateGrid({length, breadth}, currentAliveCells);
-  return mapCoordinates(topLeft,nextGen);
+  return translate(topLeft,nextGen);
 };
 
 module.exports = {nextGeneration,getDimensions};
