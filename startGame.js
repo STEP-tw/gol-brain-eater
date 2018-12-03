@@ -16,6 +16,7 @@ const main = function() {
     let grid = generateGrid(dimensions,nextGen);
     console.log(displayGrid(grid));
     currGen = nextGen;
+    iterations--;
     sleep(400);
   }
 }
